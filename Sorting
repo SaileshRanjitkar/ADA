@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <time.h>
+void sorting(int m[],int n);
+int main()
+{
+	int n,i;
+	printf("Please Enter number of elements : \n");
+	scanf("%d",&n);
+	int m[n];
+	printf("Enter the elements : \n");
+	
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&m[i]);
+	}
+	
+	clock_t t;
+	t=clock();
+	sorting(m,n);
+    	t = clock() - t;
+	double time_taken = ((double)t)/CLOCKS_PER_SEC;
+    	printf("Sort function takes %f seconds \n", time_taken);
+
+}
+
+void sorting(int m[],int n)
+{
+	int i,j,temp,pos,small;
+	for(i=0;i<n-1;i++)
+	{
+		for(j=i+1;j<n;j++)
+		{
+			small=m[i];
+			pos=i;
+			if(m[j]<small)
+			{
+				small=m[j];
+				temp=m[i];
+				m[i]=m[j];
+				m[j]=temp;
+				pos=j;
+			}
+		}
+	}
+	
+	printf("Result : \n");
+	for(i=0;i<n;i++)
+	{
+		printf("%d\n",m[i]);
+	}
+}
