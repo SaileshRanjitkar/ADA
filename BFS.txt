@@ -1,0 +1,43 @@
+#include<stdio.h>
+
+int a[30][30],b[30],visited[30],n,i,j,c=0,r=-1;
+
+void BFS(int x)
+{
+for(i=1;i<=n;i++)
+if(a[x][i] && !visited[i])
+b[++r]=i;
+if(c<=r)
+{
+visited[b[c]]=1;
+BFS(b[c++]);
+}
+}
+
+void main()
+{
+int x;
+
+printf("\n Enter the number of vertices ::");
+scanf("%d",&n);
+
+for(i=1;i<=n;i++)
+{
+b[i]=0;
+visited[i]=0;
+}
+printf("\n Enter data in matrix ::\n");
+
+for(i=1;i<=n;i++)
+for(j=1;j<=n;j++)
+scanf("%d",&a[i][j]);
+printf("\n Give intial vertex ::");
+scanf("%d",&x);
+BFS(x);
+printf("\n Reacheable nodes ::\n");
+
+for(i=1;i<=n;i++)
+if(visited[i])
+printf("%d\t",i);
+getch();
+}
